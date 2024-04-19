@@ -1,24 +1,9 @@
-'use client'
-import GetPermsAll from '@/utils/api/api-calls'
+import LoginPage from "./components/login-form";
 
-export default function LoginPage (): JSX.Element {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault()
-    const perm = await GetPermsAll()
-    console.log('Form submitted', perm)
-  }
-
+export default function Login() {
   return (
-    <form className='text-black' onSubmit={handleSubmit as React.FormEventHandler<HTMLFormElement>}>
-      <label>
-        Email
-        <input type='text' />
-      </label>
-      <label>
-        Password
-        <input type='password' />
-      </label>
-      <button type='submit'>Log in</button>
-    </form>
-  )
+    <main className='h-dvh md:flex md:justify-center md:items-center'>
+      <LoginPage />
+    </main>
+  );
 }
