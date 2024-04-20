@@ -1,14 +1,39 @@
+"use client"
 import  RegisterAdmin  from '@/app/register/API/register'
 import { LabeledInput } from '@/components/labeled-input'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
-export default function AdminForm (): JSX.Element {
 
+export const AdminForm = () => {
+    const { push } = useRouter();
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const form = new FormData(e.currentTarget);
+        const token = parseInt(form.get('token') as string);
+        console.log('form', form);
+        console.log('token', token);
+        try {
+            const register = await RegisterAdmin(form, token);
+            console.log(register);
+            push('/');
+        } catch (error) {
+            console.error(error);
+            setLoading(false);
+        }
+    };
+
+    console.log('SignUpForm');
+    console.log('loading', loading);
 
   return (
     <form
-      
-      className='
+        onSubmit={handleSubmit}
+        className='
             p-4
             md:border
             md:rounded-md
@@ -48,14 +73,6 @@ export default function AdminForm (): JSX.Element {
         />
 
         <LabeledInput
-          label='Horario'
-          type='text'
-          placeholder='Horario'
-          required
-          name='horario'
-        />
-
-        <LabeledInput
           label='Empresa'
           type='text'
           placeholder='Empresa'
@@ -89,32 +106,29 @@ export default function AdminForm (): JSX.Element {
 
         </section>
         <footer className='flex flex-col items-center justify-center gap-1'>
-        <button
-          className='
-                bg-gradient-to-r
-                from-red/90
-                via-red/80
-                via-80%
-                to-red/90
-                text-white
-                w-full
-                py-2
-                rounded-md
-                transition-opacity
-                opacity-95
-                hover:opacity-100
-            '
-          type='submit'
-        >
-            <span
-                className='font-bold'
-            >
-                <Link href='/login'>
-                Registrar
-                </Link>
-            </span>
-
-        </button>
-        </footer>
-    </form>
-  )}
+                <button
+                    className='
+                        bg-gradient-to-r
+                        from-red/90
+                        via-red/80
+                        via-80%
+                        to-red/90
+                        text-white
+                        w-full
+                        py-2
+                        rounded-md
+                        transition-opacity
+                        opacity-95
+                        hover:opacity-100
+                    '
+                    type='submit'
+                    disabled={loading}
+                >
+                    <span className='font-bold'>
+                        {loading ? 'Registrando...' : 'Registrar'}
+                    </span>
+                </button>
+            </footer>
+        </form>
+  )
+}
