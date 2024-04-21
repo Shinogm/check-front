@@ -1,4 +1,4 @@
-import { AdminForm } from "./components/admin-form";
+import { AdminForm } from "../components/admin-form";
 
 
 export default function AdminRegister() {

@@ -31,7 +31,8 @@ export default function LoginPage (): JSX.Element {
     >
 
       <section
-        className='mb-9'
+        className='mb-9 rounded-xl'
+
       >
         <LabeledInput
           label='Correo electrónico'
@@ -56,10 +57,9 @@ export default function LoginPage (): JSX.Element {
         <button
           className='
                 bg-gradient-to-r
-                from-red/90
-                via-red/80
-                via-80%
-                to-red/90
+                from-gray-800
+                via-gray-900
+                to-gray-800
                 text-white
                 w-full
                 py-2
@@ -76,8 +76,8 @@ export default function LoginPage (): JSX.Element {
             Iniciar sesión
           </span>
         </button>
-        <Link href='/register'>
-          <span className='text-[0.875rem]'>
+        <Link href='/register/admin'>
+          <span className='text-[0.875rem] text-[#145a6a] text-ellipsis'>
             Registrarse
           </span>
         </Link>
