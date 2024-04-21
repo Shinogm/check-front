@@ -1,6 +1,6 @@
 'use client'
 import { LabeledInput } from '@/components/labeled-input'
-import RegisterWorker from '../API/register-worker'
+import LoginAdmin from '../API/login'
 import Link from 'next/link'
 
 export default function LoginPage (): JSX.Element {
@@ -8,7 +8,7 @@ export default function LoginPage (): JSX.Element {
     e.preventDefault()
     const form = new FormData(e.currentTarget)
     try {
-      const user = await RegisterWorker(form)
+      const user = await LoginAdmin(form)
       console.log(user)
     } catch (error) {
       console.error(error)
