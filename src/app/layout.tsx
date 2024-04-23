@@ -1,13 +1,24 @@
+import type { Metadata } from 'next'
+import { Montserrat } from 'next/font/google'
 import './globals.css'
+
+const montserrat = Montserrat({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Checador de empleados',
+  description: 'a'
+}
 
 export default function RootLayout ({
   children
 }: Readonly<{
   children: React.ReactNode
-}>): JSX.Element {
+}>) {
   return (
-    <html lang='en' className='h-dvh md:flex md:justify-center md:items-center'>
-      <body>{children}</body>
+    <html lang='es' className='dark:bg-gray-950 bg-white'>
+      <body className={montserrat.className}>
+        {children}
+      </body>
     </html>
   )
 }
