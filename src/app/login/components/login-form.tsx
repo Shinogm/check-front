@@ -7,28 +7,27 @@ import LoadingSVG from '@/app/register/admin/components/loading'
 import { useRouter } from 'next/navigation'
 
 export const LoginForm = () => {
-  const { push } = useRouter();
-  const [loading, setLoading] = useState(false);
+  const { push } = useRouter()
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setLoading(true);
+    e.preventDefault()
+    setLoading(true)
 
-      const form = new FormData(e.currentTarget);
-      console.log('form', form);
-      try {
-          console.log("Login")
-          push('/');
-          const login = await Login(form);
+    const form = new FormData(e.currentTarget)
+    console.log('form', form)
+    try {
+      console.log('Login')
+      push('/')
+      await Login(form)
+    } catch (error) {
+      console.error(error)
+      setLoading(false)
+    }
+  }
 
-      } catch (error) {
-          console.error(error);
-          setLoading(false);
-      }
-  };
-
-  console.log('Login');
-  console.log('loading', loading);
+  console.log('Login')
+  console.log('loading', loading)
 
   return (
     <form
@@ -86,21 +85,24 @@ export const LoginForm = () => {
           type='submit'
         >
           <span className='font-bold'>
-            {loading ? <LoadingSVG
-                          className='w-6 h-6 items-center justify-center'
-                          /> : 'Iniciar sesión'}
+            {loading
+              ? <LoadingSVG
+                  className='w-6 h-6 items-center justify-center'
+                />
+              : 'Iniciar sesión'}
           </span>
         </button>
-        <Link href='/register' onClick={
+        <Link
+          href='/register' onClick={
           (e) => {
-            e.preventDefault();
-            setLoading(true);
-            push('/register');
-            
+            e.preventDefault()
+            setLoading(true)
+            push('/register')
           }
-        
-        }>
-        <span className='font-bold'>
+
+        }
+        >
+          <span className='font-bold'>
             'No tienes cuenta? Registrate aquí'
           </span>
         </Link>
@@ -108,4 +110,3 @@ export const LoginForm = () => {
     </form>
   )
 }
-

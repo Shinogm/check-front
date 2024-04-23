@@ -1,41 +1,39 @@
-"use client"
+'use client'
 import { LabeledInput } from '@/components/labeled-input'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import LoadingSVG from './loading'
 import RegisterAdmin from '../API/register'
 
-
 export const AdminForm = () => {
-    const { push } = useRouter();
-    const [loading, setLoading] = useState(false);
+  const { push } = useRouter()
+  const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
 
-        const form = new FormData(e.currentTarget);
-        const token = parseInt(form.get('token') as string);
-        console.log('form', form);
-        console.log('token', token);
-        try {
-            console.log("register")
-            push('/');
-            const register = await RegisterAdmin(form, token);
+    const form = new FormData(e.currentTarget)
+    const token = parseInt(form.get('token') as string)
+    console.log('form', form)
+    console.log('token', token)
+    try {
+      console.log('register')
+      push('/')
+      await RegisterAdmin(form, token)
+    } catch (error) {
+      console.error(error)
+      setLoading(false)
+    }
+  }
 
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
-    };
-
-    console.log('SignUpForm');
-    console.log('loading', loading);
+  console.log('SignUpForm')
+  console.log('loading', loading)
 
   return (
     <form
-        onSubmit={handleSubmit}
-        className='
+      onSubmit={handleSubmit}
+      className='
             p-4
             md:border
             md:rounded-md
@@ -106,10 +104,10 @@ export const AdminForm = () => {
           name='token'
         />
 
-        </section>
-        <footer className='flex flex-col items-center justify-center gap-1'>
-                <button
-                    className='
+      </section>
+      <footer className='flex flex-col items-center justify-center gap-1'>
+        <button
+          className='
                         bg-gradient-to-r
                         from-red/90
                         via-red/80
@@ -123,16 +121,18 @@ export const AdminForm = () => {
                         opacity-95
                         hover:opacity-100
                     '
-                    type='submit'
-                    disabled={loading}
-                >
-                    <span className='font-bold'>
-                        {loading ? <LoadingSVG
-                          className='w-6 h-6 items-center justify-center'
-                          /> : 'Registrar'}
-                    </span>
-                </button>
-            </footer>
-        </form>
+          type='submit'
+          disabled={loading}
+        >
+          <span className='font-bold'>
+            {loading
+              ? <LoadingSVG
+                  className='w-6 h-6 items-center justify-center'
+                />
+              : 'Registrar'}
+          </span>
+        </button>
+      </footer>
+    </form>
   )
 }
