@@ -3,6 +3,7 @@ import  RegisterAdmin  from '@/app/register/API/register'
 import { LabeledInput } from '@/components/labeled-input'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import LoadingSVG from './loading'
 
 
 export const AdminForm = () => {
@@ -18,9 +19,10 @@ export const AdminForm = () => {
         console.log('form', form);
         console.log('token', token);
         try {
-            const register = await RegisterAdmin(form, token);
-            console.log(register);
+            console.log("register")
             push('/');
+            const register = await RegisterAdmin(form, token);
+
         } catch (error) {
             console.error(error);
             setLoading(false);
@@ -125,7 +127,9 @@ export const AdminForm = () => {
                     disabled={loading}
                 >
                     <span className='font-bold'>
-                        {loading ? 'Registrando...' : 'Registrar'}
+                        {loading ? <LoadingSVG
+                          className='w-6 h-6 items-center justify-center'
+                          /> : 'Registrar'}
                     </span>
                 </button>
             </footer>

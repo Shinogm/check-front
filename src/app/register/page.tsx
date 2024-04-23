@@ -1,9 +1,5 @@
-<<<<<<< HEAD:src/app/register/page.tsx
 import { Back } from "../worker/components/back";
 import { AdminForm } from "./components/admin-form";
-=======
-import { AdminForm } from "../components/admin-form";
->>>>>>> 72eadf24f433997d97dcbb49f5c14ff56f268bbc:src/app/register/admin/page.tsx
 
 
 export default function AdminRegister() {
