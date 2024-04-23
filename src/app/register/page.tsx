@@ -1,5 +1,5 @@
 import { Back } from "../worker/components/back";
-import { AdminForm } from "./components/admin-form";
+import { AdminForm } from "./admin/components/admin-form";
 
 
 export default function AdminRegister() {

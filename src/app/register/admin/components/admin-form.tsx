@@ -1,9 +1,9 @@
 "use client"
-import  RegisterAdmin  from '@/app/register/API/register'
 import { LabeledInput } from '@/components/labeled-input'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import LoadingSVG from './loading'
+import RegisterAdmin from '../API/register'
 
 
 export const AdminForm = () => {
