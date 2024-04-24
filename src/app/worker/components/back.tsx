@@ -19,8 +19,7 @@ export const Back = ({ url, children }: BackProps) => {
         className='
                     text-blue-500
                     hover:text-blue-400
-                    dark:text-blue-400
-                    dark:hover:text-blue-300
+
                     cursor-pointer
                     flex
                     items-center

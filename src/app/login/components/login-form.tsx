@@ -54,9 +54,6 @@ export const LoginForm = () => {
             md:rounded-md
             md:p-10
             md:shadow-xl
-            dark:bg-gray-800
-            dark:border-gray-700
-            dark:text-white
         '
     >
 

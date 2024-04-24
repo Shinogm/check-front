@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import LoadingSVG from './loading'
 import RegisterAdmin from '../API/register'
+import { Button } from '@/components/ui/button'
 
 export const AdminForm = () => {
   const { push } = useRouter()
@@ -39,9 +40,6 @@ export const AdminForm = () => {
             md:rounded-md
             md:p-10
             md:shadow-xl
-            dark:bg-gray-800
-            dark:border-gray-700
-            dark:text-white
         '
     >
 
@@ -129,7 +127,13 @@ export const AdminForm = () => {
               ? <LoadingSVG
                   className='w-6 h-6 items-center justify-center'
                 />
-              : 'Registrar'}
+              : (
+                <Button
+                  className='w-full bg-green-500 hover:bg-green-600 text-white'
+                >
+                  Register
+                </Button>
+                )}
           </span>
         </button>
       </footer>

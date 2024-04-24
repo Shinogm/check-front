@@ -15,7 +15,7 @@ export default function RootLayout ({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='es' className='dark:bg-gray-950 bg-white'>
+    <html lang='es'>
       <body className={montserrat.className}>
         {children}
       </body>
