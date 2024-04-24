@@ -14,15 +14,31 @@ export const LoginForm = () => {
     e.preventDefault()
     setLoading(true)
 
-    const form = new FormData(e.currentTarget)
-    console.log('form', form)
+    const form = new FormData(e.currentTarget as HTMLFormElement)
+    const email = form.get('email') as string
+    const password = form.get('password') as string
+    const { rawResponse } = await Login(
+      email,
+      password
+    )
     try {
       console.log('Login')
-      push('/')
-      await Login(form)
+
+      console.log('Response', rawResponse)
+
+      if ((Number(rawResponse.status) === 200) && ((rawResponse.statusText).toString()) === 'OK') {
+        console.log('Login successful')
+        // Redirect to some other page
+        push('/worker')
+      } else {
+        // Handle other status codes or errors
+        console.error('Login failed')
+        setLoading(false)
+      }
     } catch (error) {
-      console.error(error)
-      setLoading(false)
+      console.error('Error during login:', error)
+    } finally {
+      setLoading(false) // Ensure to set loading to false whether login is successful or not
     }
   }
 
