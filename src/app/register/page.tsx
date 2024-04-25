@@ -1,3 +1,4 @@
+'use client'
 import { Back } from '../worker/components/back'
 import { AdminForm } from './admin/components/admin-form'
 

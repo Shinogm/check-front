@@ -1,13 +1,11 @@
 'use client'
 import { LabeledInput } from '@/components/labeled-input'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import LoadingSVG from './loading'
-import RegisterAdmin from '../API/register'
 import { Button } from '@/components/ui/button'
+import LoadingSVG from '@/app/register/admin/components/loading'
+import RegisterWorker from '../API/register-worker'
 
-export const AdminForm = () => {
-  const { push } = useRouter()
+export const WorkerForm = () => {
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,19 +13,15 @@ export const AdminForm = () => {
     setLoading(true)
 
     const form = new FormData(e.currentTarget)
-    const token = parseInt(form.get('token') as string)
     console.log('form', form)
-    console.log('token', token)
     try {
+      await RegisterWorker(form)
       console.log('register')
-      push('/')
-      await RegisterAdmin(form, token)
     } catch (error) {
       console.error(error)
       setLoading(false)
     }
   }
-
   console.log('SignUpForm')
   console.log('loading', loading)
 
@@ -87,21 +81,28 @@ export const AdminForm = () => {
         />
 
         <LabeledInput
-          label='Contraseña'
-          type='password'
-          placeholder='Contraseña'
+          label='Hora de entrada'
+          type='number'
+          placeholder='Hora de entrada'
           required
-          name='password'
+          name='Hora de entrada'
         />
 
         <LabeledInput
-          label='Token'
+          label='Hora de salida'
           type='number'
-          placeholder='Token'
+          placeholder='Hora de salida'
           required
-          name='token'
+          name='Hora de salida'
         />
 
+        <LabeledInput
+          label='Dias de trabajo'
+          type='text'
+          placeholder='Dias de trabajo'
+          required
+          name='Dias de trabajo'
+        />
       </section>
       <footer className='flex flex-col items-center justify-center gap-1'>
         {loading
@@ -137,6 +138,7 @@ export const AdminForm = () => {
             </Button>
             )}
       </footer>
+
     </form>
   )
 }
