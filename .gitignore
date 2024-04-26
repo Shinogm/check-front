@@ -196,3 +196,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 .next/
+front-end/.next/*
+front-end/.next/trace
+front-end/.next/cache/webpack/client-development/1.pack.gz
+front-end/.next/cache/webpack/client-development/2.pack.gz
