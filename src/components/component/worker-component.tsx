@@ -100,6 +100,10 @@ export const Worker = ({ email, name, phone, role }: Props) => {
               <FileEditIcon className='w-4 h-4' />
               <span className='sr-only'>Edit</span>
             </Button>
+            <Button className='rounded-full bg-red-400/80' size='icon' variant='destructive'>
+              <TrashIcon className='w-4 h-4 ' />
+              <span className='sr-only'>Delete</span>
+            </Button>
           </div>
         </div>
       </CardContent>

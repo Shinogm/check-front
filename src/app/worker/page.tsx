@@ -7,7 +7,7 @@ export default function AdminRegister () {
     <main className='h-dvh gap-6 md:flex md:justify-center md:items-center'>
       <div>
         <h1 className='text-3xl font-bold'>Registro de Trabajadores</h1>
-        <span className='text-sm text-gray-500'>Cerrar Sesion</span>
+        <span className='text-sm text-gray-500'>Ingreesa los datos necesarios </span>
         <div className='
             items-center
             justify-center
@@ -16,7 +16,7 @@ export default function AdminRegister () {
             mt-2
             '
         >
-          <Back url='/login'>Cerrar Sesion</Back>
+          <Back url='/worker/all-workers'>Seccion de trabajadores</Back>
         </div>
       </div>
       <section className='md:w-1/2'>

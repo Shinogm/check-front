@@ -6,7 +6,7 @@ import { PlusIcon } from 'lucide-react'
 import Link from 'next/link'
 
 export default async function Workers () {
-  const workers = await GetAdmins(1)
+  const workers = await GetAdmins(2)
 
   console.log(workers)
 
@@ -22,10 +22,11 @@ export default async function Workers () {
             phone='123456789'
             role='Worker'
           />
+
           <div className='flex items-center justify-between '>
             <h2 className='text-lg font-semibold text-white '>Workers</h2>
             <Link
-              href='/register'
+              href='/worker'
               className='bg-green-400/80 rounded-md flex px-2 justify-center items-center font-semibold py-1 text-white transition-colors hover:bg-green-400/60 focus:bg-green-400/60 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-green-400/60 dark:focus:bg-green-400/60 dark:hover:text-gray-50 dark:focus:text-gray-50 dark:focus:outline-none dark:disabled:pointer-events-none dark:disabled:opacity-50'
             >
               <PlusIcon className='w-4 h-4 mr-2 ' />
