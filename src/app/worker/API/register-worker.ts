@@ -2,7 +2,7 @@ import { APIENDPOINST } from '@/utils/api/api-urls'
 import { z } from 'zod'
 import ScanWorkerFinger from './worker-finger'
 
-const UserSchema = z.object({
+export const UserSchema = z.object({
   status: z.literal('success'),
   message: z.string(),
   user: z.array(
