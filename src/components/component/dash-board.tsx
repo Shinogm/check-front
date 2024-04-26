@@ -42,21 +42,21 @@ export function DashBoard ({ children }: DashBoardProps) {
         <aside className='hidden w-64 flex-col border-r bg-gray-50 p-6 lg:flex'>
           <div className='space-y-6'>
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:hover:bg-gray-800 dark:focus-visible:ring-gray-600'
-              href='#'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
+              href='http://localhost:3001/docs#/'
             >
               <UserIcon className='h-5 w-5' />
               Api Docs
             </Link>
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:hover:bg-gray-800 dark:focus-visible:ring-gray-600'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
               href='#'
             >
               <UsersIcon className='h-5 w-5' />
               Workers
             </Link>
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:hover:bg-gray-800 dark:focus-visible:ring-gray-600'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
               href='#'
             >
               <EyeIcon className='h-5 w-5' />
