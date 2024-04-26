@@ -1,6 +1,14 @@
 
 import { Button } from '@/components/ui/button'
 import { CardContent, Card } from '@/components/ui/card'
+import Link from 'next/link'
+
+interface Props {
+  name: string
+  role: string
+  email: string
+  phone: string
+}
 
 export default function WorkerComponent () {
   return (
@@ -8,37 +16,15 @@ export default function WorkerComponent () {
     '
     >
       <div key='1' className='grid gap-4'>
-        <Card>
-          <CardContent className='flex items-center p-4'>
-            <div className='flex items-center gap-4 text-sm'>
-              <WorkflowIcon className='w-6 h-6' />
-              <div className='grid gap-1.5'>
-                <div className='font-semibold'>Tobach</div>
-                <div className='text-xs text-gray-500 dark:text-gray-400'>Admin</div>
-              </div>
-            </div>
-            <div className='ml-auto flex items-center gap-4 text-xs'>
-              <div className='font-medium'>aj@example.com</div>
-              <div className='font-medium'>123-456-7890</div>
-              <div className='flex items-center gap-2'>
-                <Button className='rounded-full bg-green-400/80' size='icon' variant='ghost'>
-                  <FileEditIcon className='w-4 h-4' />
-                  <span className='sr-only'>Edit</span>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
         <div className='flex items-center justify-between '>
           <h2 className='text-lg font-semibold text-white '>Workers</h2>
-          <Button
-            className='bg-green-400/80
-
-          ' size='sm' variant='secondary'
+          <Link
+            href='/register'
+            className='bg-green-400/80'
           >
             <PlusIcon className='w-4 h-4 mr-2 ' />
             Create new worker
-          </Button>
+          </Link>
         </div>
         <Card>
           <CardContent className='flex items-center p-4'>
@@ -92,6 +78,32 @@ export default function WorkerComponent () {
         </Card>
       </div>
     </section>
+  )
+}
+
+export const Worker = ({ email, name, phone, role }: Props) => {
+  return (
+    <Card>
+      <CardContent className='flex items-center p-4'>
+        <div className='flex items-center gap-4 text-sm'>
+          <WorkflowIcon className='w-6 h-6' />
+          <div className='grid gap-1.5'>
+            <div className='font-semibold'>{name}</div>
+            <div className='text-xs text-gray-500 dark:text-gray-400'>{role}</div>
+          </div>
+        </div>
+        <div className='ml-auto flex items-center gap-4 text-xs'>
+          <div className='font-medium'>{email}</div>
+          <div className='font-medium'>{phone}</div>
+          <div className='flex items-center gap-2'>
+            <Button className='rounded-full bg-green-400/80' size='icon' variant='ghost'>
+              <FileEditIcon className='w-4 h-4' />
+              <span className='sr-only'>Edit</span>
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
