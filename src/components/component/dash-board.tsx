@@ -30,19 +30,19 @@ export function DashBoard({ children }: DashBoardProps) {
         <nav className='flex items-center gap-4'>
           <Link
             className='rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 '
-            href='#'
+            href='localhost:3001/docs'
           >
             Api Docs
           </Link>
           <Link
             className='rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 '
-            href='#'
+            href='workers/all-workers'
           >
             Workers
           </Link>
           <Link
             className='rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 '
-            href='#'
+            href='/login'
           >
             Cerrar Sesion
           </Link>
@@ -58,7 +58,7 @@ export function DashBoard({ children }: DashBoardProps) {
           >
             <Link
               className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
-              href='http://localhost:3001/docs#/'
+              href='http://localhost:3001/docs/'
             >
               <UserIcon className='h-5 w-5' />
               Api Docs
@@ -72,7 +72,7 @@ export function DashBoard({ children }: DashBoardProps) {
             </Link>
             <Link
               className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
-              href='#'
+              href='/identify'
             >
               <EyeIcon className='h-5 w-5' />
               Detect
