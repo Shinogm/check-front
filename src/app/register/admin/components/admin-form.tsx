@@ -1,4 +1,5 @@
 'use client'
+import { motion } from 'framer-motion'
 import { LabeledInput } from '@/components/labeled-input'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -25,6 +26,8 @@ export const AdminForm = () => {
     } catch (error) {
       console.error(error)
       setLoading(false)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -32,8 +35,11 @@ export const AdminForm = () => {
   console.log('loading', loading)
 
   return (
-    <form
+    <motion.form
       onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
       className='
             p-4
             md:border
@@ -137,6 +143,6 @@ export const AdminForm = () => {
             </Button>
             )}
       </footer>
-    </form>
+    </motion.form>
   )
 }
