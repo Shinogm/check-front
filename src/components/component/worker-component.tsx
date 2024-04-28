@@ -8,6 +8,7 @@ interface Props {
   role: string
   email: string
   phone: string
+  horario: string
 }
 
 export default function WorkerComponent () {
@@ -81,7 +82,7 @@ export default function WorkerComponent () {
   )
 }
 
-export const Worker = ({ email, name, phone, role }: Props) => {
+export const Worker = ({ email, name, phone, role, horario }: Props) => {
   return (
     <Card>
       <CardContent className='flex items-center p-4'>
@@ -94,7 +95,10 @@ export const Worker = ({ email, name, phone, role }: Props) => {
         </div>
         <div className='ml-auto flex items-center gap-4 text-xs'>
           <div className='font-medium'>{email}</div>
+
           <div className='font-medium'>{phone}</div>
+
+          <div className='font-medium'>{horario}</div>
           <div className='flex items-center gap-2'>
             <Button className='rounded-full bg-green-400/80' size='icon' variant='ghost'>
               <FileEditIcon className='w-4 h-4' />

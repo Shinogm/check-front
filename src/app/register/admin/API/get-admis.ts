@@ -9,7 +9,7 @@ const UserAdminSchema = z.object({
   telefono: z.string(),
   empresa: z.string(),
   horario: z.string(),
-  email: z.string().email(),
+  email: z.string(),
   permission: z.string()
 })
 
