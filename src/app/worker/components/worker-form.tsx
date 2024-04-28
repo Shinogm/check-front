@@ -1,4 +1,5 @@
 'use client'
+import { motion } from 'framer-motion'
 import { LabeledInput } from '@/components/labeled-input'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -26,8 +27,11 @@ export const WorkerForm = () => {
   console.log('loading', loading)
 
   return (
-    <form
+    <motion.form
       onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
       className='
             p-4
             md:border
@@ -37,8 +41,11 @@ export const WorkerForm = () => {
         '
     >
 
-      <section
+      <motion.section
         className='mb-9'
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         <LabeledInput
           label='Nombre'
@@ -103,8 +110,13 @@ export const WorkerForm = () => {
           required
           name='Dias de trabajo'
         />
-      </section>
-      <footer className='flex flex-col items-center justify-center gap-1'>
+      </motion.section>
+      <motion.footer
+        className='flex flex-col items-center justify-center gap-1'
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         {loading
           ? (
             <button
@@ -137,8 +149,8 @@ export const WorkerForm = () => {
               Register
             </Button>
             )}
-      </footer>
+      </motion.footer>
 
-    </form>
+    </motion.form>
   )
 }
