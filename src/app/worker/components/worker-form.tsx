@@ -21,6 +21,8 @@ export const WorkerForm = () => {
     } catch (error) {
       console.error(error)
       setLoading(false)
+    } finally {
+      setLoading(false)
     }
   }
   console.log('SignUpForm')
