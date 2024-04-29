@@ -24,7 +24,7 @@ import { CollapsibleTrigger, CollapsibleContent, Collapsible } from '@/component
 export function DasL () {
   return (
     <>
-      <div className='fixed top-0 left-0 z-50 h-full w-[300px] bg-white shadow-lg dark:bg-gray-950 transition-transform duration-300 ease-in-out [&[data-state=open]]:translate-x-0 [&[data-state=closed]:-translate-x-full]'>
+      <div className='fixed top-0 left-0 z-50 h-full w-[300px] bg-white shadow-lg transition-transform duration-300 ease-in-out [&[data-state=open]]:translate-x-0 [&[data-state=closed]:-translate-x-full]'>
         <div className='flex h-full flex-col justify-between'>
           <div className='space-y-6 p-6'>
             <div className='flex items-center justify-between'>
@@ -42,19 +42,19 @@ export function DasL () {
                 <CollapsibleContent className='absolute top-6 right-6'>
                   <div className='grid gap-2'>
                     <Link
-                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                       href='#'
                     >
                       Workers
                     </Link>
                     <Link
-                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                       href='#'
                     >
                       Detect
                     </Link>
                     <Link
-                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                      className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                       href='#'
                     >
                       API Docs
@@ -65,21 +65,21 @@ export function DasL () {
             </div>
             <nav className='grid gap-2'>
               <Link
-                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                 href='#'
               >
                 <UsersIcon className='h-5 w-5' />
                 Workers
               </Link>
               <Link
-                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                 href='#'
               >
                 <EyeIcon className='h-5 w-5' />
                 Detect
               </Link>
               <Link
-                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50'
+                className='flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 '
                 href='#'
               >
                 <BookIcon className='h-5 w-5' />
@@ -87,7 +87,7 @@ export function DasL () {
               </Link>
             </nav>
           </div>
-          <div className='border-t px-6 py-4 dark:border-gray-800'>
+          <div className='border-t px-6 py-4 '>
             <Button className='w-full' variant='outline'>
               Upgrade to Pro
             </Button>

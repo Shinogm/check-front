@@ -13,7 +13,7 @@ interface Props {
 
 export default function WorkerComponent () {
   return (
-    <section className='grid gap-6 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-white dark:bg-gray-800/80 rounded-lg shadow-md
+    <section className='grid gap-6 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-white  rounded-lg shadow-md
     '
     >
       <div key='1' className='grid gap-4'>
@@ -33,7 +33,7 @@ export default function WorkerComponent () {
               <WorkflowIcon className='w-6 h-6' />
               <div className='grid gap-1.5'>
                 <div className='font-semibold'>Tobach</div>
-                <div className='text-xs text-gray-500 dark:text-gray-400'>Worker</div>
+                <div className='text-xs text-gray-500 '>Worker</div>
               </div>
             </div>
             <div className='ml-auto flex items-center gap-4 text-xs'>
@@ -58,7 +58,7 @@ export default function WorkerComponent () {
               <WorkflowIcon className='w-6 h-6' />
               <div className='grid gap-1.5'>
                 <div className='font-semibold'>si</div>
-                <div className='text-xs text-gray-500 dark:text-gray-400'>Worker</div>
+                <div className='text-xs text-gray-500 '>Worker</div>
               </div>
             </div>
             <div className='ml-auto flex items-center gap-4 text-xs'>
@@ -90,7 +90,7 @@ export const Worker = ({ email, name, phone, role, horario }: Props) => {
           <WorkflowIcon className='w-6 h-6' />
           <div className='grid gap-1.5'>
             <div className='font-semibold'>{name}</div>
-            <div className='text-xs text-gray-500 dark:text-gray-400'>{role}</div>
+            <div className='text-xs text-gray-500 '>{role}</div>
           </div>
         </div>
         <div className='ml-auto flex items-center gap-4 text-xs'>

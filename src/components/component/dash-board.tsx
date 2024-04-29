@@ -1,12 +1,12 @@
-"use client"
+'use client'
 import Link from 'next/link'
-import { motion } from 'framer-motion';
-import { EyeIcon, MountainIcon } from 'lucide-react';
+import { motion } from 'framer-motion'
+import { EyeIcon, MountainIcon } from 'lucide-react'
 
 interface DashBoardProps {
   children: React.ReactNode
 }
-export function DashBoard({ children }: DashBoardProps) {
+export function DashBoard ({ children }: DashBoardProps) {
   return (
     <motion.div
       key='1'
@@ -57,21 +57,21 @@ export function DashBoard({ children }: DashBoardProps) {
             transition={{ delay: 0.4 }}
           >
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 '
               href='http://localhost:3001/docs/'
             >
               <UserIcon className='h-5 w-5' />
               Api Docs
             </Link>
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 '
               href='#'
             >
               <UsersIcon className='h-5 w-5' />
               Workers
             </Link>
             <Link
-              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 dark:focus-visible:ring-gray-600'
+              className='flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 white:hover:bg-white/90 '
               href='/identify'
             >
               <EyeIcon className='h-5 w-5' />
@@ -89,9 +89,8 @@ export function DashBoard({ children }: DashBoardProps) {
         </motion.main>
       </div>
     </motion.div>
-  );
+  )
 }
-
 
 function UserIcon (props: React.SVGProps<SVGSVGElement>) { // Add explicit type for 'props'
   return (
