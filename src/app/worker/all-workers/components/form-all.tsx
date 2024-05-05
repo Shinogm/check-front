@@ -1,4 +1,4 @@
-'use server'
+"use server"
 import GetAdmins from '@/app/register/admin/API/get-admis'
 import { Worker } from '@/components/component/worker-component'
 import { PlusIcon } from 'lucide-react'
@@ -9,19 +9,28 @@ export default async function WorkersAllC () {
 
   console.log(workers)
 
+  const admin = await GetAdmins(1)
+
+  console.log(admin)
+
   return (
 
     <main>
-      <section className='grid gap-6 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-white  rounded-lg shadow-md
-      '
-      >
-        <Worker
-          email='example@email.com'
-          name='Tobach'
-          phone='123456789'
-          role='Worker'
-          horario=''
-        />
+      <section className='grid gap-6 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-white  rounded-lg shadow-md'>
+        {admin.length > 0 ? admin.map((admin) => (
+          <Worker
+            key={admin.id}
+            email={admin.email}
+            name={admin.name}
+            phone={admin.telefono}
+            role={admin.permission}
+            horario={admin.horario || 'Este usuario es un administrador'}
+          />
+        )) : (
+          <div className='text-center text-gray-400'>No admins found</div>
+        )
+
+        }
 
         <div className='flex items-center justify-between '>
           <h2 className='text-lg font-semibold text-white '>Workers</h2>
@@ -34,18 +43,27 @@ export default async function WorkersAllC () {
           </Link>
         </div>
 
-        {
-              workers.map((worker: { email: string, name: string, telefono: string, permission: string, id: string, horario: string }) => (
-                <Worker
-                  email={worker.email}
-                  name={worker.name}
-                  phone={worker.telefono}
-                  role={worker.permission}
-                  key={worker.id}
-                  horario={worker.horario}
-                />
-              ))
-            }
+        <div className='
+        grid
+        gap-6
+        p-4
+        sm:p-6
+        '>
+
+        {workers.length > 0 ? workers.map((worker) => (
+          <Worker
+            key={worker.id}
+            email={worker.email}
+            name={worker.name}
+            phone={worker.telefono}
+            role={worker.permission}
+            horario={worker.horario || 'Este trabajador no tiene horario asignado'}
+          />
+        )) : (
+          <div className='text-center text-gray-400'>No workers found</div>
+        )
+        }
+        </div>
 
       </section>
     </main>
