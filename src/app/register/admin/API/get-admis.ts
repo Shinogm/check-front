@@ -1,3 +1,4 @@
+'use server'
 import { APIENDPOINST } from '@/utils/api/api-urls'
 import { z } from 'zod'
 
@@ -15,11 +16,12 @@ const UserAdminSchema = z.object({
 
 export default async function GetAdmins (id: number) {
   const response = await fetch(`${APIENDPOINST.getAllUserByPermIdPoint(id)}`)
+  console.log('Response:', response)
   console.log('Response:', response.status)
   const data = await response.json()
   console.log(data)
   if (!response.ok) {
-    return data
+    throw new Error('Failed to fetch')
   } else {
     return UserAdminSchema.array().parse(data.users)
   }
