@@ -9,7 +9,7 @@ const UserAdminSchema = z.object({
   domicilio: z.string(),
   telefono: z.string(),
   empresa: z.string(),
-  horario: z.string(),
+  horario: z.string().nullable(),
   email: z.string(),
   permission: z.string()
 })
@@ -21,7 +21,7 @@ export default async function GetAdmins (id: number) {
   const data = await response.json()
   console.log(data)
   if (!response.ok) {
-    throw new Error('Failed to fetch')
+    throw new Error(data.message ?? 'Something went wrong!')
   } else {
     return UserAdminSchema.array().parse(data.users)
   }
