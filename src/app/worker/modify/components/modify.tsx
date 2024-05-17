@@ -1,13 +1,71 @@
 'use client'
 import { motion } from 'framer-motion'
 import { LabeledInput } from '@/components/labeled-input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import LoadingSVG from '@/app/register/admin/components/loading'
-import RegisterWorker from '../API/register-worker'
+import modifyWorker from '../API/modify'
+import { z } from 'zod'
+import GetEmail, { UserEmail } from '../API/get-email'
 
-export const WorkerForm = () => {
+export const querySchema = z.object({
+  name: z.string(),
+  domicilio: z.string(),
+  telefono: z.string(),
+  empresa: z.string(),
+  email: z.string().email(),
+  horario: z.string(),
+  HoraDeEntrada: z.string(),
+  HoraDeSalida: z.string(),
+  DiasDeTrabajo: z.string()
+})
+
+export type queryType = z.infer<typeof querySchema>
+
+export const WorkerModifyForm = () => {
   const [loading, setLoading] = useState(false)
+  const [currentUrl, setCurrentUrl] = useState<string | null>(null)
+  const [parsedQuery, setParsedQuery] = useState<queryType | null>(null)
+  const [user, setUser] = useState<UserEmail | null>(null)
+  console.log('WorkerModifyForm', user)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    setCurrentUrl(window.location.search)
+
+    try {
+      const parsedQuery = querySchema.parse({
+        name: urlParams.get('name') ?? '',
+        domicilio: urlParams.get('domicilio') ?? '',
+        telefono: urlParams.get('telefono') ?? '',
+        empresa: urlParams.get('empresa') ?? '',
+        email: urlParams.get('email') ?? '',
+        horario: urlParams.get('horario') ?? '',
+        HoraDeEntrada: urlParams.get('HoraDeEntrada') ?? '',
+        HoraDeSalida: urlParams.get('HoraDeSalida') ?? '',
+        DiasDeTrabajo: urlParams.get('DiasDeTrabajo') ?? ''
+
+      })
+      setParsedQuery(parsedQuery)
+    } catch (error) {
+      console.error('Error al analizar la cadena de consulta:', error)
+    }
+  }, [currentUrl])
+
+  useEffect(() => {
+    GetEmail(parsedQuery?.email ?? '').then((data) => {
+      console.log('data:', data.user?.email)
+      setUser({
+        user: data.user,
+        status: data.status
+      })
+    })
+      .catch((error) => {
+        console.log('error:', error)
+      })
+  }, [parsedQuery])
+
+  console.log('getUser:', user)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,7 +74,7 @@ export const WorkerForm = () => {
     const form = new FormData(e.currentTarget)
     console.log('form', form)
     try {
-      await RegisterWorker(form)
+      await modifyWorker(form, user?.user.id ?? 0)
       console.log('register')
     } catch (error) {
       console.error(error)
@@ -53,32 +111,32 @@ export const WorkerForm = () => {
           label='Nombre'
           type='text'
           placeholder='Nombre'
-          required
           name='name'
+          defaultValue={parsedQuery?.name}
         />
 
         <LabeledInput
           label='Domicilio'
           type='text'
           placeholder='Domicilio'
-          required
           name='domicilio'
+          defaultValue={user?.user.domicilio ?? parsedQuery?.domicilio}
         />
 
         <LabeledInput
           label='Telefono'
           type='text'
           placeholder='Telefono'
-          required
           name='telefono'
+          defaultValue={user?.user.telefono}
         />
 
         <LabeledInput
           label='Empresa'
           type='text'
           placeholder='Empresa'
-          required
           name='empresa'
+          defaultValue={user?.user.empresa}
         />
 
         <LabeledInput
@@ -87,21 +145,21 @@ export const WorkerForm = () => {
           placeholder='Correo electrónico'
           required
           name='email'
+          defaultValue={user?.user.email}
         />
 
         <LabeledInput
           label='Hora de entrada'
           type='text'
           placeholder='Hora de entrada'
-          required
           name='Hora de entrada'
+          defaultValue={parsedQuery?.horario}
         />
 
         <LabeledInput
           label='Hora de salida'
           type='text'
           placeholder='Hora de salida'
-          required
           name='Hora de salida'
         />
 
@@ -109,7 +167,6 @@ export const WorkerForm = () => {
           label='Dias de trabajo'
           type='text'
           placeholder='Dias de trabajo'
-          required
           name='Dias de trabajo'
         />
       </motion.section>

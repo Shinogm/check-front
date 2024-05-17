@@ -3,6 +3,7 @@
 interface Props {
   label: string
   type: React.InputHTMLAttributes<HTMLInputElement>['type']
+  defaultValue?: string
   placeholder?: string
   required?: boolean
   name?: string
@@ -13,7 +14,7 @@ const className = {
   isCapitalized: 'capitalize'
 }
 
-export const LabeledInput = ({ label, placeholder, type, required = false, name, capitalize = false }: Props) => (
+export const LabeledInput = ({ label, defaultValue, placeholder, type, required = false, name, capitalize = false }: Props) => (
   <label
     className='flex flex-col mb-4'
   >
@@ -28,6 +29,7 @@ export const LabeledInput = ({ label, placeholder, type, required = false, name,
       placeholder={placeholder}
       required={required}
       name={name}
+      defaultValue={defaultValue}
     />
   </label>
 )

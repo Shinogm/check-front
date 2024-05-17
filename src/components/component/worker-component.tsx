@@ -1,9 +1,11 @@
-
+'use client'
 import { Button } from '@/components/ui/button'
 import { CardContent, Card } from '@/components/ui/card'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface Props {
+  id?: number
   name: string
   role: string
   email: string
@@ -82,7 +84,8 @@ export default function WorkerComponent () {
   )
 }
 
-export const Worker = ({ email, name, phone, role, horario }: Props) => {
+export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
+  const { push } = useRouter()
   return (
     <Card>
       <CardContent className='flex items-center p-4'>
@@ -100,11 +103,20 @@ export const Worker = ({ email, name, phone, role, horario }: Props) => {
 
           <div className='font-medium'>{horario}</div>
           <div className='flex items-center gap-2'>
-            <Button className='rounded-full bg-green-400/80' size='icon' variant='ghost'>
+            <Button
+              type='button' onClick={() => {
+                console.log('Edit button clicked')
+                push(`/worker/modify?id=${id ?? 0}&name=${name}&role=${role}&email=${email}&phone=${phone}&horario=${horario}`)
+              }} className='rounded-full bg-green-400/80' size='icon' variant='ghost'
+            >
               <FileEditIcon className='w-4 h-4' />
               <span className='sr-only'>Edit</span>
             </Button>
-            <Button className='rounded-full bg-red-400/80' size='icon' variant='destructive'>
+            <Button
+              type='button' onClick={() => {
+                console.log('Delete button clicked')
+              }} className='rounded-full bg-red-400/80' size='icon' variant='destructive'
+            >
               <TrashIcon className='w-4 h-4 ' />
               <span className='sr-only'>Delete</span>
             </Button>
