@@ -1,4 +1,5 @@
 'use client'
+import { deleteWorker } from '@/app/worker/API/delete-worker'
 import { Button } from '@/components/ui/button'
 import { CardContent, Card } from '@/components/ui/card'
 import Link from 'next/link'
@@ -113,8 +114,14 @@ export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
               <span className='sr-only'>Edit</span>
             </Button>
             <Button
-              type='button' onClick={() => {
+              type='button' onClick={async() => {
                 console.log('Delete button clicked')
+                const res = await deleteWorker(id ?? 0)
+                if(res?.status == 200){
+                  console.log('bien')
+                }else{
+                  console.log('mal')
+                }
               }} className='rounded-full bg-red-400/80' size='icon' variant='destructive'
             >
               <TrashIcon className='w-4 h-4 ' />
