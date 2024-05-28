@@ -9,29 +9,33 @@ const UserAdminSchema = z.object({
   domicilio: z.string(),
   telefono: z.string(),
   empresa: z.string(),
-  email: z.string().email(),
+  email: z.string(),
   password: z.string().optional(),
   perm_type: z.string().optional()
 })
 const tokenPASS = 145
 
-export default async function RegisterAdmin (form: FormData, token: number): Promise<z.infer<typeof UserAdminSchema>> {
+export default async function RegisterAdmin (form: FormData, token: number) {
   if (token !== tokenPASS) {
     throw new Error('Token invalido')
   }
 
   console.log(form)
 
-  return await fetch(`${APIENDPOINST.postRegisterPoint}`, {
+  const response = await fetch(`${APIENDPOINST.postRegisterPoint}`, {
     method: 'POST',
     body: form
   })
-    .then(async res => await res.json())
-    .then(data => {
-      if (data?.error !== undefined) {
-        throw new Error(data.error)
-      }
-      console.log(data)
-      return UserAdminSchema.parse(data)
-    })
+
+  const data = await response.json()
+  console.log('data:', data)
+
+  const parsedData = UserAdminSchema.array().parse(data.user)
+  console.log('parsedData:', parsedData)
+
+  if (response.status !== 200) {
+    console.log('response:', response)
+  }
+
+  return { status: response.status, user: parsedData }
 }

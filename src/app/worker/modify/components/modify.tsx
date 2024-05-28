@@ -7,6 +7,7 @@ import LoadingSVG from '@/app/register/admin/components/loading'
 import modifyWorker from '../API/modify'
 import { z } from 'zod'
 import GetEmail, { UserEmail } from '../API/get-email'
+import { useRouter } from 'next/navigation'
 
 export const querySchema = z.object({
   name: z.string(),
@@ -66,7 +67,7 @@ export const WorkerModifyForm = () => {
   }, [parsedQuery])
 
   console.log('getUser:', user)
-
+  const { push } = useRouter()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
@@ -75,7 +76,7 @@ export const WorkerModifyForm = () => {
     console.log('form', form)
     try {
       await modifyWorker(form, user?.user.id ?? 0)
-      console.log('register')
+      push('/worker/all-workers')
     } catch (error) {
       console.error(error)
       setLoading(false)
@@ -160,14 +161,14 @@ export const WorkerModifyForm = () => {
           label='Hora de salida'
           type='text'
           placeholder='Hora de salida'
-          name='Hora de salida'
+          name='hora'
         />
 
         <LabeledInput
           label='Dias de trabajo'
           type='text'
           placeholder='Dias de trabajo'
-          name='Dias de trabajo'
+          name='fecha'
         />
       </motion.section>
       <motion.footer

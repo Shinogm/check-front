@@ -86,6 +86,7 @@ export default function WorkerComponent () {
 }
 
 export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
+  console.log('Worker', id, email, name, phone, role, horario)
   const { push } = useRouter()
   return (
     <Card>
@@ -93,7 +94,7 @@ export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
         <div className='flex items-center gap-4 text-sm'>
           <WorkflowIcon className='w-6 h-6' />
           <div className='grid gap-1.5'>
-            <div className='font-semibold'>{name}</div>
+            <div className='font-semibold'>{id}:{name}</div>
             <div className='text-xs text-gray-500 '>{role}</div>
           </div>
         </div>
@@ -114,12 +115,12 @@ export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
               <span className='sr-only'>Edit</span>
             </Button>
             <Button
-              type='button' onClick={async() => {
+              type='button' onClick={async () => {
                 console.log('Delete button clicked')
                 const res = await deleteWorker(id ?? 0)
-                if(res?.status == 200){
-                  console.log('bien')
-                }else{
+                if (res?.status === 200) {
+                  window.location.reload()
+                } else {
                   console.log('mal')
                 }
               }} className='rounded-full bg-red-400/80' size='icon' variant='destructive'
@@ -134,6 +135,40 @@ export const Worker = ({ id, email, name, phone, role, horario }: Props) => {
   )
 }
 
+interface PropsAdmin {
+  id?: number
+  name?: string
+  role?: string
+  email?: string
+  phone?: string
+  horario?: string
+}
+
+export const Admin = ({ id, email, name, phone, role, horario }: PropsAdmin) => {
+  console.log('Worker', id, email, name, phone, role, horario)
+  const { push } = useRouter()
+  return (
+    <Card>
+      <CardContent className='flex items-center p-4'>
+        <div className='flex items-center gap-4 text-sm'>
+          <WorkflowIcon className='w-6 h-6' />
+          <div className='grid gap-1.5'>
+            <div className='font-semibold'>{id}:{name}</div>
+            <div className='text-xs text-gray-500 '>{role}</div>
+          </div>
+        </div>
+        <div className='ml-auto flex items-center gap-4 text-xs'>
+          <div className='font-medium'>{email}</div>
+
+          <div className='font-medium'>{phone}</div>
+
+          <div className='font-medium'>{horario}</div>
+
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
 function FileEditIcon (props) {
   return (
     <svg

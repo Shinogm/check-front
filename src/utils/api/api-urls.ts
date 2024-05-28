@@ -8,7 +8,7 @@ export const APIENDPOINST = {
   getAllUsersPoint: `${API_URL}/user/get`,
   getAllUserByPermIdPoint: (permID: number) => `${API_URL}/user/get/permissions/${permID}?perm_id=${permID}`,
   getWorkerScheduleByScanPoint: `${API_URL}/user/get/horario`,
-  putUserByIdPoint: (id: number) => `${API_URL}/user/update/${id}`,
+  putUserByIdPoint: (id: number) => `${API_URL}/user/modify/${id}`,
   deleteUserByIdPoint: (id: number) => `${API_URL}/user/delete/${id}`,
   // Permissions
   getPermsAllPoint: `${API_URL}/perms/get`,

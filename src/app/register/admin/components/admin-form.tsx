@@ -6,6 +6,7 @@ import { useState } from 'react'
 import LoadingSVG from './loading'
 import RegisterAdmin from '../API/register'
 import { Button } from '@/components/ui/button'
+import { Toaster, toast } from 'sonner'
 
 export const AdminForm = () => {
   const { push } = useRouter()
@@ -21,11 +22,20 @@ export const AdminForm = () => {
     console.log('token', token)
     try {
       console.log('register')
-      push('/')
-      await RegisterAdmin(form, token)
+      const res = await RegisterAdmin(form, token)
+      console.log('res:', res)
+      if (res.status === 200) {
+        toast.success('Usuario registrado')
+
+        console.log('bien')
+        push('/')
+      } else {
+        toast.error('Error al registrar usuario')
+      }
     } catch (error) {
-      console.error(error)
+      console.log('error:', error)
       setLoading(false)
+      toast.error('Error al registrar usuario')
     } finally {
       setLoading(false)
     }
@@ -134,13 +144,16 @@ export const AdminForm = () => {
             </button>
             )
           : (
-            <Button
-              className='w-full bg-green-500 hover:bg-green-600 text-white'
-              type='submit'
-              disabled={loading}
-            >
-              Register
-            </Button>
+            <>
+              <Toaster />
+              <Button
+                className='w-full bg-green-500 hover:bg-green-600 text-white'
+                type='submit'
+                disabled={loading}
+              >
+                Register
+              </Button>
+            </>
             )}
       </footer>
     </motion.form>

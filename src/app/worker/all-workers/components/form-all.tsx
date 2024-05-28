@@ -1,10 +1,12 @@
 'use server'
 import GetAdmins from '@/app/register/admin/API/get-admis'
-import { Worker } from '@/components/component/worker-component'
+import { Admin, Worker } from '@/components/component/worker-component'
 import { PlusIcon } from 'lucide-react'
+import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 
 export default async function WorkersAllC () {
+  revalidatePath('/worker')
   const workers = await GetAdmins(2)
 
   console.log(workers)
@@ -19,8 +21,9 @@ export default async function WorkersAllC () {
       <section className='grid gap-6 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-white  rounded-lg shadow-md'>
         {admin.length > 0
           ? admin.map((admin) => (
-            <Worker
+            <Admin
               key={admin.id}
+              id={admin.id}
               email={admin.email}
               name={admin.name}
               phone={admin.telefono}
@@ -55,6 +58,7 @@ export default async function WorkersAllC () {
             ? workers.map((worker) => (
               <Worker
                 key={worker.id}
+                id={worker.id}
                 email={worker.email}
                 name={worker.name}
                 phone={worker.telefono}
