@@ -3,15 +3,15 @@ import { APIENDPOINST } from '@/utils/api/api-urls'
 export default async function modifyWorker (form: FormData, id: number) {
   console.log('modifyWorker function called with form:', form)
 
-  const HoraDeEntrada = form.get('Hora de entrada') as string
+  const HoraDeEntrada = form.get('horaEntrada') as string
   console.log('Hora de entrada:', HoraDeEntrada)
-  const FechaDeSalida = form.get('Hora de salida') as string
+  const FechaDeSalida = form.get('horaSalida') as string
   console.log('Hora de salida:', FechaDeSalida)
   const format = `${HoraDeEntrada} a ${FechaDeSalida}`
   console.log('format:', format)
   const query = new URLSearchParams()
   query.append('hora', format)
-  query.append('fecha', form.get('Dias de trabajo') as string)
+  query.append('fecha', form.get('fechaSemana') as string)
 
   console.log('Query Params:', query.toString())
 

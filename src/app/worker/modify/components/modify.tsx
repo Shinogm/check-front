@@ -149,26 +149,29 @@ export const WorkerModifyForm = () => {
           defaultValue={user?.user.email}
         />
 
+        <span className='text-sm text-gray-500'>
+          Tu horario anterior de trabajo es: {parsedQuery?.horario ?? 'No se ha asignado'}
+        </span>
+
         <LabeledInput
           label='Hora de entrada'
           type='text'
           placeholder='Hora de entrada'
-          name='Hora de entrada'
-          defaultValue={parsedQuery?.horario}
+          name='horaEntrada'
         />
 
         <LabeledInput
           label='Hora de salida'
           type='text'
           placeholder='Hora de salida'
-          name='hora'
+          name='horaSalida'
         />
 
         <LabeledInput
           label='Dias de trabajo'
           type='text'
           placeholder='Dias de trabajo'
-          name='fecha'
+          name='fechaSemana'
         />
       </motion.section>
       <motion.footer
